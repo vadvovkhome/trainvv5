@@ -13,23 +13,23 @@ public class Mytest {
  WebDriver driver = null;
  
  @Before
- public void beforetest() {
+ public void beforetest() throws Exception{
   // set geckodriver path.
   System.setProperty("webdriver.gecko.driver", "C:\\workspace\\tools\\chromedriver.exe");
   //initialize firefox driver.
   driver = new FirefoxDriver();
   //driver = new ChromeDriver();
   
-  
-  driver.manage().window().maximize();
-  driver.get("http://www.google.com");
-  System.out.print("http://www.google.com is loaded");
-  //driver.get("http://only-testing-blog.blogspot.in/2013/11/new-test.html");
+
+  //driver.manage().window().maximize();
+ // driver.get("http://www.google.com");
+  //System.out.print("http://www.google.com is loaded");
+ driver.get("http://only-testing-blog.blogspot.in/2013/11/new-test.html");
  }
  
  @After
  public void aftertest() {
-  driver.quit();
+  //driver.quit();
   
  }
  
