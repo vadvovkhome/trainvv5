@@ -8,6 +8,7 @@ import org.junit.Test;
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -26,15 +27,15 @@ public class MyFirstTest {
 		System.setProperty("webdriver.firefox.marionette","C:\\workspace\\tools\\geckodriver.exe");
 		driver = new FirefoxDriver();
 	  
-		 driver.manage().window().maximize();
+		// driver.manage().window().maximize();
 		 driver.get("http://www.google.com");
 		 driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
-		 System.out.print("http://www.google.com is loaded");
+		 System.out.println("http://www.google.com is loaded");
 	}
  
 	@After
  	public void aftertest() {
-		//driver.quit();
+		driver.quit();
   
 	}
 	
@@ -46,8 +47,19 @@ public class MyFirstTest {
 		System.out.println("Found element by q");
 		driver.findElement(By.name("btnK")).click();
 		System.out.println("Click element btnK");
-		wait.until(ExpectedConditions.titleContains("webdriver - Пошук Google")); //does not work
+		
+		String title = driver.getTitle();
+		System.out.print("The title is: " + title);
+		
+		//wait.until(ExpectedConditions.titleContains("webdriver")); //does not work
+	//	wait.until(ExpectedConditions.titleContains(": Google"));
+		wait.until(ExpectedConditions.titleContains("webdriver - Пошук Google"));
+		//titleContains(String title)
+		//check if the home title is correct String 
+	  
+	    
 		System.out.println("ExpectedConditions is 'webdriver - Пошук в Google'");
+		
 	 }
 
  }
